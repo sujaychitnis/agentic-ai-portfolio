@@ -252,6 +252,7 @@ h2.section-head{
   color:var(--accent-ink);
   letter-spacing:.03em;
 }
+.tile-date{font-family:'Plex Mono';font-size:9.5px;color:var(--ink-faint);letter-spacing:.04em;}
 
 /* ---------- dialogs ---------- */
 dialog{
@@ -322,6 +323,27 @@ dialog::backdrop{background:rgba(15,12,7,.55);backdrop-filter:blur(1px);}
 .pill.alpha{color:var(--status-alpha-fg);background:var(--status-alpha-bg);}
 .pill.build{color:var(--status-build-fg);background:var(--status-build-bg);}
 .pill.priv{color:var(--status-priv-fg);background:var(--status-priv-bg);}
+
+.view-input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+.view-tab-bar{display:flex;gap:6px;margin:8px 0 36px;border-bottom:1px solid var(--line-strong);}
+.view-tab-bar label{
+  font-family:'Plex Mono';
+  font-size:12.5px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  padding:10px 4px 12px;
+  margin-right:28px;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  transition:color .15s ease;
+}
+.view-panel{display:none;}
+#view-enterprise:checked ~ #view-panel-wrap .view-tab-bar label.l-enterprise,
+#view-personal:checked ~ #view-panel-wrap .view-tab-bar label.l-personal{color:var(--accent-ink);border-bottom-color:var(--accent);}
+#view-enterprise:checked ~ #view-panel-wrap .view-panel.panel-enterprise,
+#view-personal:checked ~ #view-panel-wrap .view-panel.panel-personal{display:block;}
 
 .tabs input[type="radio"]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
 .tab-bar{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px;}
@@ -401,11 +423,121 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;font-family:'Plex Mo
 <div class="wrap">
 <header class="mast">
   <h1 class="name">Sujay Chitnis</h1>
-  <p class="role">Enterprise delivery leader who now directs agentic AI systems the way he used to direct engineering programs: with scope, cost discipline, and a sign-off before anything irreversible happens.</p>
+  <p class="role">Technology and delivery leader, 23 years in enterprise financial services. Two views below: the enterprise programs I've directed, and the agentic AI systems I build hands-on, myself.</p>
   <div class="mast-meta">
     <span>Pune, India</span>
     <a href="https://www.linkedin.com/in/sujaychitnis">LinkedIn</a>
   </div>
+</header>
+
+<main>
+<input type="radio" name="view" id="view-enterprise" class="view-input" checked>
+<input type="radio" name="view" id="view-personal" class="view-input">
+<div id="view-panel-wrap">
+<div class="view-tab-bar">
+  <label class="l-enterprise" for="view-enterprise">Enterprise Delivery</label>
+  <label class="l-personal" for="view-personal">Personal Build</label>
+</div>
+
+<div class="view-panel panel-enterprise">
+<section id="dashboard-enterprise">
+  <h2 class="section-head">23 years of enterprise delivery, eleven programs deep</h2>
+  <p class="lede">Real, paid technical program management work: the problem, what I directed or built hands-on, how it was architected, and what shipped. Every program below is fully implemented and live in production. Open any tile for the full breakdown.</p>
+  <div class="bg-row" style="margin-bottom:32px;">
+    <div><span class="bg-num">11</span><span class="bg-label">programs, all shipped and live in production</span></div>
+    <div><span class="bg-num">2014&ndash;2026</span><span class="bg-label">span across three employers/ventures</span></div>
+    <div><span class="bg-num">8</span><span class="bg-label">hands-on, worked day to day, not just directed</span></div>
+    <div><span class="bg-num">3</span><span class="bg-label">directed end-to-end, team executed</span></div>
+  </div>
+
+  <div class="dash-grid">
+
+<button class="tile" onclick="document.getElementById('dlg-oracle').showModal()">
+      <div class="tile-eyebrow"><span>Live, hands-on &middot; <span class="tile-date">2026</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">Oracle&rarr;PostgreSQL Migration</h3>
+      <p class="tile-hook">A $1M+ managed-services program I helped win and run day to day: staffing, estimation, solution design, delivery.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Model</span><span class="tile-stat" style="font-size:.95rem">Milestone-based FP</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-jdk21').showModal()">
+      <div class="tile-eyebrow"><span>Directed &middot; <span class="tile-date">2026</span></span><span class="led build"></span></div>
+      <h3 class="tile-title">AI-Driven JDK21 Migration</h3>
+      <p class="tile-hook">4,000+ files, two major Java versions, directed end-to-end on GitHub Copilot; team executed under my direction.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Timeline cut</span><span class="tile-stat">3mo &rarr; 3wk</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-genai').showModal()">
+      <div class="tile-eyebrow"><span>Led directly &middot; <span class="tile-date">2025</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">GenAI Enablement Cohorts</h3>
+      <p class="tile-hook">Four capability cohorts I designed and ran myself, building the AI-fluency base the account's programs draw on.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Trained</span><span class="tile-stat">200+ eng.</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-sastopython').showModal()">
+      <div class="tile-eyebrow"><span>Live, hands-on &middot; <span class="tile-date">2024&ndash;2025</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">SAS-to-Python Risk-Model Conversion</h3>
+      <p class="tile-hook">A $1.4M AI-assisted conversion program, staffed and directed end-to-end, on a strict numerical-accuracy bar.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Velocity</span><span class="tile-stat">+30%</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-fixedincome').showModal()">
+      <div class="tile-eyebrow"><span>Accountable &middot; <span class="tile-date">2024&ndash;2025</span></span><span class="led build"></span></div>
+      <h3 class="tile-title">Fixed Income Trading Platform</h3>
+      <p class="tile-hook">A strategic in-house build to remove dependency on a third-party vendor platform; I'm accountable for it, a dedicated team delivers.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Status</span><span class="tile-stat" style="font-size:.95rem">In build</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-messaging').showModal()">
+      <div class="tile-eyebrow"><span>Accountable &middot; <span class="tile-date">2024&ndash;2025</span></span><span class="led build"></span></div>
+      <h3 class="tile-title">Messaging Migration, TIBCO&rarr;RabbitMQ</h3>
+      <p class="tile-hook">A trading engine's messaging backbone moved across ~20 production instances with zero downtime; I'm accountable for it, a dedicated team delivered.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Instances</span><span class="tile-stat">~20, live</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-awscost').showModal()">
+      <div class="tile-eyebrow"><span>Live, hands-on &middot; <span class="tile-date">2024</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">AWS Cost Optimization &amp; Decommissioning</h3>
+      <p class="tile-hook">A proactive pitch I analyzed and structured myself, turning cloud waste into a self-funding savings program.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Savings</span><span class="tile-stat">$1M+/yr</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-aitrader').showModal()">
+      <div class="tile-eyebrow"><span>Founder, hands-on &middot; <span class="tile-date">2023</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">AI Trader Startup</h3>
+      <p class="tile-hook">An independent venture: a computer-vision/ML model I designed and trained myself to read chart patterns.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Status</span><span class="tile-stat" style="font-size:.95rem">Investor stage</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-wiproidp').showModal()">
+      <div class="tile-eyebrow"><span>Led, hands-on &middot; <span class="tile-date">2020&ndash;2022</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">Wipro Intelligent Document Processing</h3>
+      <p class="tile-hook">A patent-approved product; I was hands-on on security/certs and infra, and directed the rest of a 5-6 person team.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Processing time</span><span class="tile-stat">&minus;60%</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-support').showModal()">
+      <div class="tile-eyebrow"><span>Turnaround, hands-on &middot; <span class="tile-date">2018&ndash;2019</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">Production Support Salvage</h3>
+      <p class="tile-hook">A failing $2M support program, 50+ engineers across three countries, rebuilt from the ground up.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Backlog cut</span><span class="tile-stat">2,000+&rarr;&lt;100</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+<button class="tile" onclick="document.getElementById('dlg-creditcard').showModal()">
+      <div class="tile-eyebrow"><span>Led, hands-on &middot; <span class="tile-date">2014&ndash;2020</span></span><span class="led live"></span></div>
+      <h3 class="tile-title">Credit-Card Analytics &amp; Campaign Platform</h3>
+      <p class="tile-hook">A KNN cross-sell platform and a $4M big-data marketing transformation, both directed hands-on with small core teams.</p>
+      <div class="tile-foot"><span><span class="tile-stat-label">Offer acceptance</span><span class="tile-stat">+20%</span></span><span class="tile-open">open &rsaquo;</span></div>
+    </button>
+
+
+  </div>
+</section>
+</div>
+
+<div class="view-panel panel-personal">
+<section id="dashboard">
+  <h2 class="section-head">Six systems, one substrate underneath</h2>
+  <p class="lede">Hands-on, built from scratch by me, to whichever stage each one is at right now. I bring the same enterprise program-management discipline into these builds that shows up in Enterprise Delivery: scope, cost discipline, and a sign-off before anything irreversible happens. Checked against a hard truth boundary throughout. Open any tile for how it looks, what it does today, and where it's headed.</p>
   <div class="telemetry">
     <span class="t-item">SYSTEMS <span class="t-num">6</span></span>
     <span class="t-item"><span class="t-dot live"></span>DAILY USE <span class="t-num">1</span></span>
@@ -414,12 +546,6 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;font-family:'Plex Mo
     <span class="t-item"><span class="t-dot priv"></span>PROPRIETARY <span class="t-num">1</span></span>
     <span class="t-item">SUBSTRATE <span class="t-num">1</span></span>
   </div>
-</header>
-
-<main>
-<section id="dashboard">
-  <h2 class="section-head">Six systems, one substrate underneath</h2>
-  <p class="lede">Every project below is directed, not typed, and checked against a hard truth boundary. Open any tile for how it looks, what it does today, and where it's headed.</p>
 
   <div class="dash-grid">
 
@@ -492,12 +618,780 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;font-family:'Plex Mo
     <div><span class="bg-num">5</span><span class="bg-label">countries, one delivery org</span></div>
   </div>
 </section>
+</div>
+</div>
 </main>
 
 <footer>
   <span>&copy; Sujay Chitnis &middot; every claim on this page is checked against source before it's published</span>
 </footer>
 </div>
+
+<!-- ================= ENTERPRISE DIALOGS ================= -->
+
+<dialog id="dlg-oracle" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Live, hands-on &middot; Infosys, Director, Program Management &middot; 2026</p>
+        <h3 class="dlg-title">Oracle&rarr;PostgreSQL Migration</h3>
+        <p class="dlg-role">Legacy database modernization &middot; managed-services program, Investment Banking domain</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">One of two programs I run hands-on today, end-to-end: staffing, estimation, solution design, and delivery, under a milestone-based contract I helped design and win.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-or" id="or-a" checked>
+      <input class="t-b" type="radio" name="tabs-or" id="or-b">
+      <input class="t-c" type="radio" name="tabs-or" id="or-c">
+      <div class="tab-bar">
+        <label class="l-a" for="or-a">Problem &amp; Solution</label>
+        <label class="l-b" for="or-b">Architecture</label>
+        <label class="l-c" for="or-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> a suite of investment-banking applications ran on Oracle, a commercial database carrying high licensing cost and limiting cloud-migration flexibility. The bank's standard for new applications had moved to PostgreSQL, open-source and cloud-native, but migrating an established application estate isn't just a schema copy: the hardest piece was the dynamic, runtime-built queries that no automated migration tool can parse and translate on its own.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> I won this as a proactive pitch, not an inbound request, then ran it end-to-end across three work packages: modernizing a dependent form-designer application, the core schema migration, and a validated cutover. Every dynamic query in the estate was systematically catalogued and rewritten by hand rather than left to an automated tool that couldn't reliably handle them, and I paired that with an AI-assisted validation utility to catch migration-correctness issues before they reached production.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .or-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .or-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .or-sub{fill:#6B6862;font-size:10px;}
+              .or-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <g transform="translate(0,18)">
+            <rect class="or-box" x="20" y="20" width="205" height="86"/>
+            <text x="32" y="42" class="or-title">WP1: Form Designer</text>
+            <text x="32" y="60" class="or-sub">UI/UX + backend rework</text>
+            <text x="32" y="74" class="or-sub">for PostgreSQL dependency</text>
+            <text x="32" y="94" class="or-sub">(must land before WP2)</text>
+
+            <rect class="or-box" x="245" y="20" width="205" height="86"/>
+            <text x="257" y="42" class="or-title">WP2: Schema Migration</text>
+            <text x="257" y="60" class="or-sub">Full Oracle&rarr;PostgreSQL</text>
+            <text x="257" y="74" class="or-sub">schema + code changes;</text>
+            <text x="257" y="94" class="or-sub">dynamic queries hand-rewritten</text>
+
+            <rect class="or-box" x="470" y="20" width="205" height="86"/>
+            <text x="482" y="42" class="or-title">WP3: Cutover</text>
+            <text x="482" y="60" class="or-sub">STRIIM real-time</text>
+            <text x="482" y="74" class="or-sub">replication, milestone-</text>
+            <text x="482" y="94" class="or-sub">gated validation, low downtime</text>
+
+            <rect class="or-box" x="695" y="20" width="185" height="86"/>
+            <text x="707" y="42" class="or-title">Target state</text>
+            <text x="707" y="60" class="or-sub">PostgreSQL on-prem,</text>
+            <text x="707" y="74" class="or-sub">migrating toward Azure</text>
+            <text x="707" y="94" class="or-sub">PostgreSQL managed</text>
+
+            <line x1="20" y1="120" x2="880" y2="120" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="144" class="or-cap">Commercial structure: fixed-price managed-services contract, each work package's deliverables and acceptance criteria signed off by the bank's SMEs at each milestone before the payment trigger fires.</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> Oracle, PostgreSQL, Azure PostgreSQL (managed, target state), STRIIM (real-time replication), AI-assisted migration-validation tooling.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">This is one of two managed-services programs I actively run today, not something I inherited. I helped win it, staffed it, and I'm accountable for solution design and delivery under the same milestone-based commercial model I helped structure. The trust behind this contract traces directly back to an earlier program (see Production Support Salvage below) where a proactive governance pattern I built rebuilt this same client's confidence in the account.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-sastopython" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Live, hands-on &middot; Infosys, Director, Program Management &middot; 2024&ndash;2025</p>
+        <h3 class="dlg-title">SAS-to-Python Risk-Model Conversion</h3>
+        <p class="dlg-role">AI-assisted code conversion &middot; managed-services program, Group Functions (risk) domain</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">The second program I run hands-on today: converting a large estate of legacy SAS risk models to Python, on a bar strict enough that capital-calculation outputs have to match exactly, not approximately.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-sp" id="sp-a" checked>
+      <input class="t-b" type="radio" name="tabs-sp" id="sp-b">
+      <input class="t-c" type="radio" name="tabs-sp" id="sp-c">
+      <div class="tab-bar">
+        <label class="l-a" for="sp-a">Problem &amp; Solution</label>
+        <label class="l-b" for="sp-b">Architecture</label>
+        <label class="l-c" for="sp-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> a large estate of legacy SAS-based risk models needed converting to Python, sitting inside a larger fixed-price managed-services contract tied to the bank's post-acquisition integration work. SAS is expensive and aging; some of these models feed directly into regulatory capital calculations, so a straight rewrite carries real numerical-accuracy risk, not just a language-porting risk.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> an AI-assisted first-pass conversion, with every converted script validated numerically against its original SAS output before it's allowed anywhere near production. Anything feeding a capital calculation has to hold inside a tolerance the client's own quant team signs off on, not one I define unilaterally. I was closely, hands-on involved in staffing, coordinating across teams, estimation, solution design, development, testing, and the milestone-based commercial structuring for this workstream specifically.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .sp-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .sp-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .sp-sub{fill:#6B6862;font-size:10px;}
+              .sp-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#spArrow);}
+              .sp-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <defs><marker id="spArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker></defs>
+            <g transform="translate(0,18)">
+            <rect class="sp-box" x="20" y="20" width="220" height="80"/>
+            <text x="32" y="42" class="sp-title">1. AI first-pass</text>
+            <text x="32" y="60" class="sp-sub">SAS script &rarr; Python,</text>
+            <text x="32" y="74" class="sp-sub">AI-assisted conversion</text>
+
+            <line x1="248" y1="60" x2="284" y2="60" class="sp-arrow"/>
+
+            <rect class="sp-box" x="286" y="20" width="240" height="80"/>
+            <text x="298" y="42" class="sp-title">2. Numerical validation</text>
+            <text x="298" y="60" class="sp-sub">every script checked against</text>
+            <text x="298" y="74" class="sp-sub">original SAS output</text>
+
+            <line x1="534" y1="60" x2="570" y2="60" class="sp-arrow"/>
+
+            <rect class="sp-box" x="572" y="20" width="300" height="80"/>
+            <text x="584" y="42" class="sp-title">3. Quant sign-off gate</text>
+            <text x="584" y="60" class="sp-sub">capital-calculation logic held to a</text>
+            <text x="584" y="74" class="sp-sub">tolerance the client's quant team owns</text>
+
+            <line x1="20" y1="112" x2="880" y2="112" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="136" class="sp-cap">$1.4M, ~6-month fixed-price contract; two streams (Integration + Modernization), this workstream inside Modernization; milestone-based billing I helped structure.</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> SAS, Python, AI-assisted code-conversion tooling, numerical-equivalence validation pipeline.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">Sprint velocity on the underlying conversion work is up roughly 30%, using a RAG-based approach that grounds each converted segment in existing reference patterns rather than free-generating it. Like the Oracle-to-PostgreSQL program, this is a live managed-services contract I helped win and run day to day, not a program a dedicated PM runs while I stay one step removed.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-awscost" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Live, hands-on &middot; Infosys, Director, Program Management &middot; 2024</p>
+        <h3 class="dlg-title">AWS Cost Optimization &amp; Decommissioning</h3>
+        <p class="dlg-role">Cloud FinOps &middot; proactive pitch, self-funding savings program</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">A proactive pitch, not an inbound ask: I had the usage analysis run, structured the commercial model myself, and it unlocked <span class="verified">$1M+</span> a year without costing the client more than it saved.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-aws" id="aws-a" checked>
+      <input class="t-b" type="radio" name="tabs-aws" id="aws-b">
+      <input class="t-c" type="radio" name="tabs-aws" id="aws-c">
+      <div class="tab-bar">
+        <label class="l-a" for="aws-a">Problem &amp; Solution</label>
+        <label class="l-b" for="aws-b">Architecture</label>
+        <label class="l-c" for="aws-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> cloud spend accumulates idle and oversized workloads over time, and nobody had gone looking for it on this account. It's not a client complaint to react to; it's a cost sitting in plain sight that requires someone to proactively go find it.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> I structured this as a two-part, self-funding program. First, a usage-pattern and cost analysis (AWS Cost and Usage Reports plus EC2 utilization/right-sizing via Cost Explorer) to identify idle and oversized workloads and produce a formal decommissioning plan. Second, rather than simply shutting workloads down, the decommissioned spend was consolidated into Infosys's own larger enterprise-wide AWS agreement, and the economies of scale in that bigger contract unlocked savings beyond what decommissioning alone would have.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .aw-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .aw-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .aw-sub{fill:#6B6862;font-size:10px;}
+              .aw-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#awArrow);}
+              .aw-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <defs><marker id="awArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker></defs>
+            <g transform="translate(0,18)">
+            <rect class="aw-box" x="20" y="20" width="260" height="80"/>
+            <text x="32" y="42" class="aw-title">1. Usage analysis</text>
+            <text x="32" y="60" class="aw-sub">AWS Cost &amp; Usage Reports +</text>
+            <text x="32" y="74" class="aw-sub">Cost Explorer right-sizing</text>
+
+            <line x1="288" y1="60" x2="324" y2="60" class="aw-arrow"/>
+
+            <rect class="aw-box" x="326" y="20" width="240" height="80"/>
+            <text x="338" y="42" class="aw-title">2. Decommission plan</text>
+            <text x="338" y="60" class="aw-sub">idle/oversized workloads</text>
+            <text x="338" y="74" class="aw-sub">identified, formally planned</text>
+
+            <line x1="574" y1="60" x2="610" y2="60" class="aw-arrow"/>
+
+            <rect class="aw-box" x="612" y="20" width="268" height="80"/>
+            <text x="624" y="42" class="aw-title">3. Consolidate to enterprise deal</text>
+            <text x="624" y="60" class="aw-sub">spend folded into Infosys's</text>
+            <text x="624" y="74" class="aw-sub">larger AWS agreement</text>
+
+            <line x1="20" y1="112" x2="880" y2="112" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="136" class="aw-cap">Self-funding by design: the cost of the analysis/decommissioning work was offset by the realized savings, with the client capturing meaningfully more than the engagement cost.</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> AWS Cost Explorer, AWS Cost and Usage Reports, EC2 right-sizing analysis, enterprise AWS agreement consolidation.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">$1M+ a year in cloud infrastructure savings, structured so the client never had to weigh the cost of finding the savings against the savings themselves. Like the proactive pitch that later won the Fixed Income platform work, this is part of a pattern: don't wait for the client to ask, bring a costed, structured proposal to them first.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-genai" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Led directly &middot; Infosys, Director, Program Management &middot; 2025</p>
+        <h3 class="dlg-title">GenAI Enablement Cohorts</h3>
+        <p class="dlg-role">AI-capability building &middot; account-wide engineering enablement</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">Four cohorts, <span class="verified">200+</span> engineers cumulative, designed and run by me directly: the shared skill base every AI-assisted program on this account draws on.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-ga" id="ga-a" checked>
+      <input class="t-b" type="radio" name="tabs-ga" id="ga-b">
+      <input class="t-c" type="radio" name="tabs-ga" id="ga-c">
+      <div class="tab-bar">
+        <label class="l-a" for="ga-a">Problem &amp; Solution</label>
+        <label class="l-b" for="ga-b">Architecture</label>
+        <label class="l-c" for="ga-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> AI-assisted delivery only compounds across an account if the engineers actually running the programs are fluent with the tools, not just the one or two people who built the first pilot. Without a deliberate enablement effort, AI adoption stays concentrated in a handful of people and never becomes a genuine account-wide capability.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> I designed and ran four capability-building cohorts myself, each covering 50+ engineers, in AI-assisted delivery practices. This wasn't a one-off training session; it was structured so the skills fed directly into the account's actual live programs, including the same GitHub Copilot practices behind the JDK21 migration and the Oracle-to-PostgreSQL and SAS-to-Python conversion work.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 150" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .ga-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .ga-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .ga-sub{fill:#6B6862;font-size:10px;}
+              .ga-num{fill:#8A5A17;font-size:22px;font-weight:700;}
+            </style>
+            <g transform="translate(0,18)">
+            <rect class="ga-box" x="20" y="15" width="200" height="90"/>
+            <text class="ga-num" x="32" y="55">4</text>
+            <text x="32" y="78" class="ga-sub">cohorts run, each</text>
+            <text x="32" y="92" class="ga-sub">designed by me directly</text>
+
+            <rect class="ga-box" x="245" y="15" width="200" height="90"/>
+            <text class="ga-num" x="257" y="55">50+</text>
+            <text x="257" y="78" class="ga-sub">engineers per cohort,</text>
+            <text x="257" y="92" class="ga-sub">200+ cumulative</text>
+
+            <rect class="ga-box" x="470" y="15" width="410" height="90"/>
+            <text x="482" y="37" class="ga-title">Feeds directly into:</text>
+            <text x="482" y="55" class="ga-sub">JDK21 migration (GitHub Copilot)</text>
+            <text x="482" y="70" class="ga-sub">Oracle&rarr;PostgreSQL validation tooling</text>
+            <text x="482" y="85" class="ga-sub">SAS-to-Python RAG-based conversion</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> GitHub Copilot, GenAI enablement curriculum design, account-wide adoption tracking.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">200+ engineers trained cumulative across four cohorts. This is the capability layer underneath every other AI-accelerated program on this account: the JDK21 migration, the two managed-services conversions, and the AWS cost work all draw on the same base this built.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-jdk21" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Directed, team-delivered &middot; Infosys, Director, Program Management &middot; 2026</p>
+        <h3 class="dlg-title">AI-Driven JDK21 Migration</h3>
+        <p class="dlg-role">Legacy modernization &middot; directed on GitHub Copilot for a global investment banking client</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">A 4,000+ file codebase, two major Java versions behind, estimated at 3 months of manual effort. Directed end-to-end on GitHub Copilot and closed it in <span class="verified">3 weeks</span>, with no production hiccups.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-jdk" id="jdk-a" checked>
+      <input class="t-b" type="radio" name="tabs-jdk" id="jdk-b">
+      <input class="t-c" type="radio" name="tabs-jdk" id="jdk-c">
+      <div class="tab-bar">
+        <label class="l-a" for="jdk-a">Problem &amp; Solution</label>
+        <label class="l-b" for="jdk-b">Architecture</label>
+        <label class="l-c" for="jdk-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> a large Java codebase, built up over many years, was two major versions behind (JDK 11 to JDK 21). That gap meant removed and changed APIs, SSL/TLS protocols tightened by default, and Spring Boot 2.x reaching end of life, which forced a namespace change across the entire codebase (javax to jakarta) on top of the version jump itself. Done by hand, this was estimated at 3 months, with real regression risk given the scale.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> I chose GitHub Copilot specifically for this migration, then directed a program built around four distinct tasks it could do faster and more consistently than manual review: scan the full codebase for every deprecated pattern in one pass, generate the replacement code for each deprecated API call, identify and fix connections still using deprecated SSL/TLS settings, and catch logic bugs that wouldn't otherwise surface until runtime (like differences in how concurrent collections behave across JDK versions). I wasn't writing the migration myself; I chose the tool, defined the four-task program around it, and directed the team executing it.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .jdk-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;rx:6;}
+              .jdk-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .jdk-sub{fill:#6B6862;font-size:10px;}
+              .jdk-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#jdkArrow);}
+              .jdk-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <defs>
+              <marker id="jdkArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker>
+            </defs>
+            <rect class="jdk-box" x="20" y="40" width="190" height="90"/>
+            <text x="32" y="62" class="jdk-title">1. Scan</text>
+            <text x="32" y="80" class="jdk-sub">4,000-file codebase,</text>
+            <text x="32" y="94" class="jdk-sub">one pass</text>
+            <text x="32" y="112" class="jdk-sub">&#8594; prioritized change list</text>
+
+            <line x1="212" y1="85" x2="248" y2="85" class="jdk-arrow"/>
+
+            <rect class="jdk-box" x="250" y="40" width="190" height="90"/>
+            <text x="262" y="62" class="jdk-title">2. Replace</text>
+            <text x="262" y="80" class="jdk-sub">javax &#8594; jakarta,</text>
+            <text x="262" y="94" class="jdk-sub">Spring Boot 3.x</text>
+            <text x="262" y="112" class="jdk-sub">API equivalents</text>
+
+            <line x1="442" y1="85" x2="478" y2="85" class="jdk-arrow"/>
+
+            <rect class="jdk-box" x="480" y="40" width="190" height="90"/>
+            <text x="492" y="62" class="jdk-title">3. SSL/TLS fix</text>
+            <text x="492" y="80" class="jdk-sub">flag SSLv3/TLS 1.0,</text>
+            <text x="492" y="94" class="jdk-sub">generate TLS 1.2/1.3</text>
+            <text x="492" y="112" class="jdk-sub">compliant replacements</text>
+
+            <line x1="672" y1="85" x2="708" y2="85" class="jdk-arrow"/>
+
+            <rect class="jdk-box" x="710" y="40" width="170" height="90"/>
+            <text x="722" y="62" class="jdk-title">4. Bug catch</text>
+            <text x="722" y="80" class="jdk-sub">concurrency/runtime</text>
+            <text x="722" y="94" class="jdk-sub">diffs across JDK</text>
+            <text x="722" y="112" class="jdk-sub">versions</text>
+
+            <line x1="20" y1="160" x2="880" y2="160" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="184" class="jdk-title" font-size="13">Timeline</text>
+            <text x="20" y="204" class="jdk-sub">Manual estimate: 3 months</text>
+            <text x="20" y="220" class="jdk-sub">Actual, Copilot-directed: 3 weeks (60&#8211;70% engineering effort saved)</text>
+            <text x="20" y="244" class="jdk-cap">All four steps directed by me; the team executed under that direction. Outcome: zero production incidents post-rollout.</text>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> Java (JDK 11&#8594;21), Spring Boot 2.x&#8594;3.x, Jakarta EE namespace, TLS 1.2/1.3, GitHub Copilot (impact analysis, code generation, review acceleration).</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">This became a flagship AI-accelerated delivery case for the account: an estimated 3-month program compressed to 3 weeks, roughly 60&#8211;70% less engineering effort during impact analysis and development, and a clean rollout with no production incidents. It's also the clearest example of how I actually use AI in delivery: choosing the right tool for a specific, bounded problem, directing a program around it, and holding the outcome to the same production bar as if it had been done by hand.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-support" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Turnaround, hands-on &middot; Infosys, Senior Project Manager &middot; 2018&ndash;2019</p>
+        <h3 class="dlg-title">Production Support Salvage</h3>
+        <p class="dlg-role">Rescuing a failing $2M support-transformation program &middot; India, US, Canada</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">A support program had fallen behind badly enough that the ticket backlog had grown past <span class="verified">2,000</span>. Six months later it was under 100, and the operating pattern I built to get there is still how I run client trust today.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-sup" id="sup-a" checked>
+      <input class="t-b" type="radio" name="tabs-sup" id="sup-b">
+      <input class="t-c" type="radio" name="tabs-sup" id="sup-c">
+      <div class="tab-bar">
+        <label class="l-a" for="sup-a">Problem &amp; Solution</label>
+        <label class="l-b" for="sup-b">Operating Model</label>
+        <label class="l-c" for="sup-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> a $2M support-transformation program was failing. The ticket backlog had grown past 2,000, delivery was spread across 50+ engineers and stakeholders in India, the US, and Canada, and client trust in the account was eroding along with it.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> two changes, run together. First, an operational fix: restructuring the team and the triage process so the backlog got worked through systematically instead of reactively. Second, a governance fix: proactive weekly and monthly reviews directly with the client's key stakeholders, so there was a senior person visibly close to the work, not just a status report landing in an inbox.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .sup-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .sup-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .sup-sub{fill:#6B6862;font-size:10px;}
+              .sup-bar-before{fill:#E8D9C8;stroke:#8A5A17;}
+              .sup-bar-after{fill:#DEEBE5;stroke:#2C6B5C;}
+              .sup-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <g transform="translate(0,18)">
+            <text x="20" y="28" class="sup-title" font-size="13">Backlog, before &amp; after</text>
+            <rect class="sup-bar-before" x="20" y="42" width="130" height="90"/>
+            <text x="35" y="92" class="sup-title" font-size="20">2,000+</text>
+            <text x="35" y="108" class="sup-sub">tickets, at the low point</text>
+            <rect class="sup-bar-after" x="170" y="112" width="130" height="20"/>
+            <text x="185" y="127" class="sup-title" font-size="13">&lt; 100</text>
+            <text x="20" y="150" class="sup-sub">6 months, same team, restructured triage</text>
+
+            <line x1="340" y1="20" x2="340" y2="150" stroke="#DDD8CC" stroke-width="1"/>
+
+            <text x="370" y="28" class="sup-title" font-size="13">Governance cadence added</text>
+            <rect class="sup-box" x="370" y="42" width="240" height="40"/>
+            <text x="382" y="58" class="sup-title">Weekly</text>
+            <text x="382" y="74" class="sup-sub">operational triage review</text>
+            <rect class="sup-box" x="370" y="92" width="240" height="40"/>
+            <text x="382" y="108" class="sup-title">Monthly</text>
+            <text x="382" y="124" class="sup-sub">client stakeholder review, senior-led</text>
+
+            <line x1="640" y1="20" x2="640" y2="150" stroke="#DDD8CC" stroke-width="1"/>
+
+            <text x="670" y="28" class="sup-title" font-size="13">What it earned later</text>
+            <rect class="sup-box" x="670" y="42" width="200" height="90"/>
+            <text x="682" y="62" class="sup-sub">Same governance pattern,</text>
+            <text x="682" y="78" class="sup-sub">kept running since, is a</text>
+            <text x="682" y="94" class="sup-sub">real part of why this client</text>
+            <text x="682" y="110" class="sup-sub">later handed over the</text>
+            <text x="682" y="126" class="sup-sub">Oracle-PostgreSQL and</text>
+            <text x="682" y="142" class="sup-sub">SAS-to-Python contracts.</text>
+
+            <line x1="20" y1="180" x2="880" y2="180" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="204" class="sup-cap">Two changes, run in parallel, not sequentially: fix how the work moves, and fix how the client sees it moving.</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">The backlog came down from over 2,000 tickets to under 100 within six months. But the longer-term result matters more: the proactive-governance discipline built here is something I've run on every account since, and it's a real, traceable part of why this same client later handed my team two new managed-services contracts (an Oracle-to-PostgreSQL migration and a SAS-to-Python conversion) built on the trust this recovery earned back.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-fixedincome" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Accountable, team-delivered &middot; Infosys, Director, Program Management &middot; 2024&ndash;2025</p>
+        <h3 class="dlg-title">Fixed Income Trading Platform</h3>
+        <p class="dlg-role">Strategic in-house build &middot; Investment Banking domain</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">The most strategically significant new build in this account: a fully in-house fixed income trading platform, replacing dependency on an external vendor system. I'm accountable for it at the account level; a dedicated team delivers the engineering.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-fi" id="fi-a" checked>
+      <input class="t-b" type="radio" name="tabs-fi" id="fi-b">
+      <input class="t-c" type="radio" name="tabs-fi" id="fi-c">
+      <div class="tab-bar">
+        <label class="l-a" for="fi-a">Problem &amp; Solution</label>
+        <label class="l-b" for="fi-b">Architecture</label>
+        <label class="l-c" for="fi-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> the bank relied on a vendor-supplied platform for fixed income trading, which meant real cost exposure, license risk, and limited control over the product roadmap for a core trading capability.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> build a fully in-house platform instead, owning the full trade lifecycle for fixed income instruments internally, and giving the bank full IP ownership plus the ability to shape the platform to its own workflows and regulatory needs. My team put together a detailed unified proposal positioning us as the build-and-run partner, not just a build vendor.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 170" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .fi-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .fi-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .fi-sub{fill:#6B6862;font-size:10px;}
+              .fi-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <g transform="translate(0,18)">
+            <text x="20" y="16" class="fi-title" font-size="13">Microservices architecture, Java/Spring Boot + React front end</text>
+            <rect class="fi-box" x="20" y="28" width="205" height="66"/>
+            <text x="32" y="48" class="fi-title">Pricing &amp; data</text>
+            <text x="32" y="64" class="fi-sub">Real-time pricing feeds</text>
+            <text x="32" y="78" class="fi-sub">Bloomberg integration</text>
+
+            <rect class="fi-box" x="245" y="28" width="205" height="66"/>
+            <text x="257" y="48" class="fi-title">Risk</text>
+            <text x="257" y="64" class="fi-sub">Risk models</text>
+            <text x="257" y="78" class="fi-sub">P&amp;L / Greeks / VAR</text>
+
+            <rect class="fi-box" x="470" y="28" width="205" height="66"/>
+            <text x="482" y="48" class="fi-title">Reference data</text>
+            <text x="482" y="64" class="fi-sub">Instrument master</text>
+            <text x="482" y="78" class="fi-sub">Counterparty curve data</text>
+
+            <rect class="fi-box" x="695" y="28" width="185" height="66"/>
+            <text x="707" y="48" class="fi-title">Downstream</text>
+            <text x="707" y="64" class="fi-sub">Will feed GF risk</text>
+            <text x="707" y="78" class="fi-sub">engines once live</text>
+
+            <line x1="20" y1="112" x2="880" y2="112" stroke="#DDD8CC" stroke-width="1"/>
+            <text x="20" y="136" class="fi-cap">Status: in build. Integration hooks already designed into the architecture for the bank's existing risk and reporting infrastructure.</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> Java, Spring Boot, React, microservices architecture, Bloomberg market-data integration.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">Still in build, so the impact story here is about what's being removed and what's being gained: vendor license cost and roadmap risk go away, and the bank gets a platform it fully owns and can shape to its own regulatory and workflow needs. I own this at the account level; the engineering team I direct is building it.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-messaging" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Accountable, team-delivered &middot; Infosys, Director, Program Management &middot; 2024&ndash;2025</p>
+        <h3 class="dlg-title">Messaging Migration, TIBCO&rarr;RabbitMQ</h3>
+        <p class="dlg-role">Legacy infrastructure modernization &middot; Investment Banking, agency trading</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">A trading engine's messaging backbone, migrated across roughly 20 live production instances, with zero downtime and no disruption to trading operations.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-msg" id="msg-a" checked>
+      <input class="t-b" type="radio" name="tabs-msg" id="msg-b">
+      <input class="t-c" type="radio" name="tabs-msg" id="msg-c">
+      <div class="tab-bar">
+        <label class="l-a" for="msg-a">Problem &amp; Solution</label>
+        <label class="l-b" for="msg-b">Architecture</label>
+        <label class="l-c" for="msg-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> the agency trading allocator, a high-performance order-routing and allocation engine covering four instrument classes (cash equities, swaps/equity, rates options, and convertible bonds), ran its messaging on TIBCO Rendezvous: costly, aging licensed infrastructure with no natural cloud-migration path.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> migrate the messaging backbone to RabbitMQ, an open, cloud-compatible message broker, across all four asset classes simultaneously, in production, with a zero-downtime transition. This wasn't a side project; it directly unblocked the account's cloud-migration path and removed the TIBCO licensing cost.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 150" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .msg-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .msg-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .msg-sub{fill:#6B6862;font-size:10px;}
+              .msg-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#msgArrow);}
+              .msg-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <defs><marker id="msgArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker></defs>
+            <g transform="translate(0,18)">
+            <rect class="msg-box" x="20" y="15" width="260" height="80"/>
+            <text x="32" y="37" class="msg-title">Before</text>
+            <text x="32" y="55" class="msg-sub">TIBCO Rendezvous</text>
+            <text x="32" y="69" class="msg-sub">costly, aging, license-locked</text>
+
+            <line x1="288" y1="55" x2="324" y2="55" class="msg-arrow"/>
+
+            <rect class="msg-box" x="326" y="15" width="260" height="80"/>
+            <text x="338" y="37" class="msg-title">After</text>
+            <text x="338" y="55" class="msg-sub">RabbitMQ</text>
+            <text x="338" y="69" class="msg-sub">open, cloud-compatible broker</text>
+
+            <rect class="msg-box" x="612" y="15" width="268" height="80"/>
+            <text x="624" y="37" class="msg-title">Scope</text>
+            <text x="624" y="55" class="msg-sub">~20 production instances,</text>
+            <text x="624" y="69" class="msg-sub">4 asset classes, zero downtime</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> TIBCO Rendezvous (retired), RabbitMQ, Java high-performance messaging, JVM tuning.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">A clean, zero-downtime cutover across ~20 live production instances and four asset classes, that removed a costly legacy licensing dependency and unblocked the account's broader cloud-migration path. I'm accountable for this at the account level; a dedicated engineering team delivered it.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-aitrader" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Founder, hands-on &middot; Independent venture &middot; 2023</p>
+        <h3 class="dlg-title">AI Trader Startup</h3>
+        <p class="dlg-role">Computer-vision/ML venture &middot; self-directed, personally built</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">A self-directed venture I designed and trained myself: a computer-vision/ML model that reads TradingView candlestick chart patterns to assess trade favorability.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-trd" id="trd-a" checked>
+      <input class="t-b" type="radio" name="tabs-trd" id="trd-b">
+      <input class="t-c" type="radio" name="tabs-trd" id="trd-c">
+      <div class="tab-bar">
+        <label class="l-a" for="trd-a">Problem &amp; Solution</label>
+        <label class="l-b" for="trd-b">Architecture</label>
+        <label class="l-c" for="trd-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> manually reading candlestick chart patterns to assess trade favorability doesn't scale, and is inconsistent trader to trader. I wanted to test whether a model could learn to recognize those patterns as reliably as an experienced eye, and whether that was a real, fundable business.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> I independently designed and trained a Python-based computer-vision/ML model against historical TradingView chart data to recognize recurring candlestick patterns and score trade favorability. This was solo, hands-on technical work, not a delegated build.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 130" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .at-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .at-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .at-sub{fill:#6B6862;font-size:10px;}
+              .at-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#atArrow);}
+            </style>
+            <defs><marker id="atArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker></defs>
+            <g transform="translate(0,18)">
+            <rect class="at-box" x="20" y="15" width="220" height="70"/>
+            <text x="32" y="37" class="at-title">Historical chart data</text>
+            <text x="32" y="55" class="at-sub">TradingView candlesticks</text>
+
+            <line x1="248" y1="50" x2="284" y2="50" class="at-arrow"/>
+
+            <rect class="at-box" x="286" y="15" width="240" height="70"/>
+            <text x="298" y="37" class="at-title">Computer-vision/ML model</text>
+            <text x="298" y="55" class="at-sub">Python, pattern recognition</text>
+
+            <line x1="534" y1="50" x2="570" y2="50" class="at-arrow"/>
+
+            <rect class="at-box" x="572" y="15" width="230" height="70"/>
+            <text x="584" y="37" class="at-title">Trade favorability score</text>
+            <text x="584" y="55" class="at-sub">pattern-based assessment</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> Python, computer vision, ML model training, TradingView historical chart data.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">The venture reached active investor conversations. I paused it to return to full-time corporate employment for financial stability while fundraising continued, not because the underlying model or the thesis stopped working.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-wiproidp" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Led, hands-on &middot; Wipro, Delivery Manager, AI (Americas) &middot; 2020&ndash;2022</p>
+        <h3 class="dlg-title">Wipro Intelligent Document Processing</h3>
+        <p class="dlg-role">Patent-approved product &middot; complaint-email automation, healthcare client</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">Led and was hands-on with a 5-6 person team as product manager and technology solution designer; personally built the security/certificate layer and redesigned a data-egress-sensitive integration myself.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-wp" id="wp-a" checked>
+      <input class="t-b" type="radio" name="tabs-wp" id="wp-b">
+      <input class="t-c" type="radio" name="tabs-wp" id="wp-c">
+      <div class="tab-bar">
+        <label class="l-a" for="wp-a">Problem &amp; Solution</label>
+        <label class="l-b" for="wp-b">Architecture</label>
+        <label class="l-c" for="wp-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> a 20+-person team in the Philippines was manually reading and re-keying every complaint email into Salesforce by hand, on a $2M program for a pharmaceutical-industry client. That's slow, expensive, and error-prone at scale.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> an in-house intelligent document-processing product, led and directed hands-on, not just managed. Inbound emails ingested via Microsoft Graph API; AWS Textract and Comprehend handled the ~70% of complaints with structured content, custom Python classification (built by the team under my direction) handled the remaining ~30% unstructured cases; a purpose-built review web app gave a human reviewer a side-by-side comparison before anything went downstream. Two pieces I executed personally, not just directed: the security and certificate configuration across all environments, and the AWS infrastructure interfacing. I also personally redesigned the Salesforce integration from a push to a pull model after identifying a client data-egress exposure, so Salesforce retrieves data from an encrypted intermediate layer (TLS in transit, AES-256 at rest) instead of the client's system pushing data out directly.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .wp-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .wp-boxme{fill:#F1E3C8;stroke:#8A5A17;}
+              .wp-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .wp-sub{fill:#6B6862;font-size:10px;}
+              .wp-arrow{stroke:#B8B2A2;stroke-width:1.5;marker-end:url(#wpArrow);}
+              .wp-cap{fill:#6B6862;font-size:10.5px;font-style:italic;}
+            </style>
+            <defs><marker id="wpArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8B2A2"/></marker></defs>
+            <g transform="translate(0,18)">
+            <rect class="wp-box" x="20" y="15" width="160" height="60"/>
+            <text x="30" y="35" class="wp-title" font-size="11">Outlook</text>
+            <text x="30" y="50" class="wp-sub">Graph API ingestion</text>
+
+            <line x1="182" y1="45" x2="212" y2="45" class="wp-arrow"/>
+
+            <rect class="wp-box" x="214" y="15" width="180" height="60"/>
+            <text x="224" y="35" class="wp-title" font-size="11">Textract/Comprehend</text>
+            <text x="224" y="50" class="wp-sub">~70% structured cases</text>
+
+            <line x1="396" y1="45" x2="426" y2="45" class="wp-arrow"/>
+
+            <rect class="wp-box" x="428" y="15" width="180" height="60"/>
+            <text x="438" y="35" class="wp-title" font-size="11">Custom classification</text>
+            <text x="438" y="50" class="wp-sub">~30% unstructured, team-built</text>
+
+            <line x1="610" y1="45" x2="640" y2="45" class="wp-arrow"/>
+
+            <rect class="wp-box" x="642" y="15" width="238" height="60"/>
+            <text x="652" y="35" class="wp-title" font-size="11">Review app</text>
+            <text x="652" y="50" class="wp-sub">human-in-the-loop, side-by-side</text>
+
+            <rect class="wp-boxme" x="428" y="90" width="180" height="60"/>
+            <text x="438" y="110" class="wp-title" font-size="11">Security/certs (me, personally)</text>
+            <text x="438" y="125" class="wp-sub">Dev/Test/UAT/Prod, all envs</text>
+
+            <rect class="wp-boxme" x="642" y="90" width="238" height="60"/>
+            <text x="652" y="110" class="wp-title" font-size="11">Salesforce push&rarr;pull (me, personally)</text>
+            <text x="652" y="125" class="wp-sub">TLS in transit, AES-256 at rest</text>
+
+            <text x="20" y="170" class="wp-cap">Highlighted boxes: pieces I executed hands-on myself, not just directed.</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> Microsoft Graph API, AWS Textract, AWS Comprehend, Python, Salesforce integration, TLS/AES-256 encryption, AWS infrastructure (security/cert configuration).</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">Complaint-processing time cut 60% on a $2M program. The product was submitted and approved through Wipro's internal patent process as Wipro-proprietary IP, and later scaled to additional intelligent-document-processing use cases beyond the original one.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-creditcard" onclick="if(event.target===this)this.close()">
+  <div class="dlg-inner">
+    <div class="dlg-head">
+      <div class="dlg-head-text">
+        <p class="dlg-eyebrow">Led, hands-on &middot; Infosys, Senior Project Manager &middot; 2014&ndash;2020</p>
+        <h3 class="dlg-title">Credit-Card Analytics &amp; Campaign Platform</h3>
+        <p class="dlg-role">Customer analytics &amp; big-data marketing &middot; major US credit-card and financial-services client</p>
+      </div>
+      <form method="dialog"><button class="dlg-close" aria-label="Close">&times;</button></form>
+    </div>
+    <p class="hook">Two programs, both directed hands-on with small core teams: a KNN-based cross-sell platform and a $4M big-data marketing transformation.</p>
+    <div class="tabs">
+      <input class="t-a" type="radio" name="tabs-cc" id="cc-a" checked>
+      <input class="t-b" type="radio" name="tabs-cc" id="cc-b">
+      <input class="t-c" type="radio" name="tabs-cc" id="cc-c">
+      <div class="tab-bar">
+        <label class="l-a" for="cc-a">Problem &amp; Solution</label>
+        <label class="l-b" for="cc-b">Architecture</label>
+        <label class="l-c" for="cc-c">Impact</label>
+      </div>
+      <div class="tab-panel panel-a">
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Problem:</strong> credit-card cross-sell offers weren't well targeted, and the marketing team's campaign time-to-market was slow, both symptoms of an analytics and data platform that hadn't kept pace with the volume of customer data available.</p>
+        <p style="font-size:.94rem;color:var(--ink-muted);"><strong style="color:var(--ink)">Solution:</strong> two connected efforts, both hands-on with small, focused teams rather than run at arm's length. A KNN-based customer-analytics platform for cross-sell targeting, directed with a ~6-person team, plus a $4M big-data/analytics transformation for the broader credit-card marketing platform.</p>
+      </div>
+      <div class="tab-panel panel-b">
+        <div class="gate-wrap">
+          <svg viewBox="0 0 900 130" xmlns="http://www.w3.org/2000/svg" font-family="'IBM Plex Mono','Courier New',monospace">
+            <style>
+              .cc-box{fill:#FFFFFF;stroke:#DDD8CC;stroke-width:1;}
+              .cc-title{fill:#2B2B28;font-size:12px;font-weight:700;}
+              .cc-sub{fill:#6B6862;font-size:10px;}
+              .cc-num{fill:#8A5A17;font-size:20px;font-weight:700;}
+            </style>
+            <g transform="translate(0,18)">
+            <rect class="cc-box" x="20" y="15" width="260" height="80"/>
+            <text x="32" y="37" class="cc-title">KNN Cross-Sell Platform</text>
+            <text class="cc-num" x="32" y="70">+20%</text>
+            <text x="90" y="70" class="cc-sub">offer-acceptance lift</text>
+            <text x="32" y="86" class="cc-sub">~6-person team, directed hands-on</text>
+
+            <rect class="cc-box" x="300" y="15" width="290" height="80"/>
+            <text x="312" y="37" class="cc-title">Big-Data Marketing Transformation</text>
+            <text class="cc-num" x="312" y="70">$4M</text>
+            <text x="360" y="70" class="cc-sub">program, +20% time-to-market</text>
+            <text x="312" y="86" class="cc-sub">credit-card marketing platform</text>
+            </g>
+          </svg>
+        </div>
+        <p style="font-size:.9rem;color:var(--ink-muted);margin-top:10px;"><strong style="color:var(--ink)">Tech stack:</strong> KNN (k-nearest-neighbors) customer analytics, big-data/analytics platform, campaign-management tooling.</p>
+      </div>
+      <div class="tab-panel panel-c">
+        <p class="vision-text">Offer acceptance up roughly 20% on the KNN platform, and campaign time-to-market improved 20% on the broader $4M transformation. Both directed with small, hands-on core teams rather than run at a distance, the same operating pattern that later showed up in the production-support recovery and the current account's managed-services programs.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <!-- ================= DIALOGS ================= -->
 
@@ -684,9 +1578,11 @@ resume-tailor is allowed to touch it.</pre>
     <div class="tabs">
       <input class="t-a" type="radio" name="tabs-vivek" id="vivek-a" checked>
       <input class="t-b" type="radio" name="tabs-vivek" id="vivek-b">
+      <input class="t-c" type="radio" name="tabs-vivek" id="vivek-c">
       <div class="tab-bar">
         <label class="l-a" for="vivek-a">Architecture</label>
-        <label class="l-b" for="vivek-b">Stack</label>
+        <label class="l-b" for="vivek-b">Features</label>
+        <label class="l-c" for="vivek-c">Stack</label>
       </div>
       <div class="tab-panel panel-a">
         <div class="gate-wrap">
@@ -740,10 +1636,19 @@ resume-tailor is allowed to touch it.</pre>
           </svg>
           <p class="gate-caption">Illustrative diagram, not a real screenshot: entity labels here are generic placeholders. In practice, entities extracted from a document (a decision, a commitment, a status, a person) become nodes; a question is answered by walking this graph and the local vector index together, then handed to a fully local LLM to phrase the answer, source-cited, with zero data ever leaving the machine.</p>
         </div>
-        <blockquote class="pitch">"A fully offline, air-gap-compliant second brain that ingests 13,000+ documents across email, SharePoint, and OneDrive, extracting entities via spaCy, embedding and indexing them with BGE in SQLite, and linking knowledge through dual NetworkX and Kùzu graphs, orchestrated by a LangGraph agentic pipeline with a local Phi-3-mini LLM. It surfaces grounded, source-cited answers to 'what did we commit, who worked on this, what's the status' in seconds, with zero data leaving the network."</blockquote>
-        <p style="font-size:.94rem;color:var(--ink-muted);">It runs on sensitive material and stays private, but it's the deepest technical evidence of how I actually work with an AI coding agent: I directed Claude Code to design and build every layer of this, from a custom binary-format document parser up through a two-graph knowledge model. Directing that build, and being able to read, debug, and reason about the code it produced, is the actual skill; typing the code myself was never the point.</p>
       </div>
       <div class="tab-panel panel-b">
+        <ul class="feature-list">
+          <li><strong>13,000+ documents ingested</strong>, across email, SharePoint, and OneDrive.</li>
+          <li><strong>Entity extraction</strong> via spaCy NER: decisions, commitments, statuses, people, projects.</li>
+          <li><strong>Dual knowledge graph</strong>, NetworkX and Kùzu, linking entities to each other over time.</li>
+          <li><strong>BGE embeddings in SQLite</strong> for semantic search alongside the graph.</li>
+          <li><strong>LangGraph agentic pipeline</strong>, orchestrating retrieval and reasoning steps.</li>
+          <li><strong>Fully local LLM</strong> (Phi-3-mini, with a Llama fallback) phrases the final answer, source-cited, with zero data ever leaving the network.</li>
+        </ul>
+        <p style="font-size:.94rem;color:var(--ink-muted);margin-top:14px;">It runs on sensitive material and stays private, but it's the deepest technical evidence of how I actually work with an AI coding agent: I directed Claude Code to design and build every layer of this, from a custom binary-format document parser up through the two-graph knowledge model. Directing that build, and being able to read, debug, and reason about the code it produced, is the actual skill; typing the code myself was never the point.</p>
+      </div>
+      <div class="tab-panel panel-c">
         <ul class="stack"><li>spaCy NER</li><li>BGE embeddings</li><li>SQLite (multi-DB)</li><li>NetworkX + Kùzu graphs</li><li>LangGraph</li><li>local Phi-3-mini / Llama fallback</li><li>pywin32 Outlook COM</li></ul>
       </div>
     </div>
