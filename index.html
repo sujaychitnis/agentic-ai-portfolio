@@ -341,9 +341,18 @@ dialog::backdrop{background:rgba(15,12,7,.55);backdrop-filter:blur(1px);}
 }
 .view-panel{display:none;}
 #view-enterprise:checked ~ #view-panel-wrap .view-tab-bar label.l-enterprise,
-#view-personal:checked ~ #view-panel-wrap .view-tab-bar label.l-personal{color:var(--accent-ink);border-bottom-color:var(--accent);}
+#view-personal:checked ~ #view-panel-wrap .view-tab-bar label.l-personal,
+#view-roadmap:checked ~ #view-panel-wrap .view-tab-bar label.l-roadmap{color:var(--accent-ink);border-bottom-color:var(--accent);}
 #view-enterprise:checked ~ #view-panel-wrap .view-panel.panel-enterprise,
-#view-personal:checked ~ #view-panel-wrap .view-panel.panel-personal{display:block;}
+#view-personal:checked ~ #view-panel-wrap .view-panel.panel-personal,
+#view-roadmap:checked ~ #view-panel-wrap .view-panel.panel-roadmap{display:block;}
+
+.stage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0 32px;}
+.stage-card{border:1px solid var(--line);border-radius:8px;padding:16px 18px;background:var(--surface-2);}
+.stage-card .stage-num{font-family:'Plex Mono';font-size:11px;color:var(--accent-ink);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:6px;}
+.stage-card h4{margin:0 0 8px;font-size:1.02rem;}
+.stage-card p{margin:0;font-size:.89rem;color:var(--ink-muted);}
+.roadmap-note{margin-top:28px;padding:14px 16px;background:var(--surface-2);border-left:2px solid var(--line-strong);border-radius:0 6px 6px 0;font-size:.9rem;color:var(--ink-muted);max-width:68ch;}
 
 .tabs input[type="radio"]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
 .tab-bar{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px;}
@@ -433,10 +442,12 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;font-family:'Plex Mo
 <main>
 <input type="radio" name="view" id="view-enterprise" class="view-input" checked>
 <input type="radio" name="view" id="view-personal" class="view-input">
+<input type="radio" name="view" id="view-roadmap" class="view-input">
 <div id="view-panel-wrap">
 <div class="view-tab-bar">
   <label class="l-enterprise" for="view-enterprise">Enterprise Delivery</label>
   <label class="l-personal" for="view-personal">Personal Build</label>
+  <label class="l-roadmap" for="view-roadmap">AI Roadmap</label>
 </div>
 
 <div class="view-panel panel-enterprise">
@@ -616,6 +627,50 @@ footer{border-top:1px solid var(--line);padding:26px 0 50px;font-family:'Plex Mo
     <div><span class="bg-num">$12M+</span><span class="bg-label">portfolio directed, 3 lines of business</span></div>
     <div><span class="bg-num">~500</span><span class="bg-label">developer-days saved annually on one program</span></div>
     <div><span class="bg-num">5</span><span class="bg-label">countries, one delivery org</span></div>
+  </div>
+</section>
+</div>
+
+<div class="view-panel panel-roadmap">
+<section id="dashboard-roadmap">
+  <h2 class="section-head">The AI roadmap, in four stages</h2>
+  <p class="lede">Enterprise programs taught me the governance and sequencing. Building my own agentic system hands-on taught me the mechanics underneath. Same roadmap, walked stage by stage &mdash; this is how I'd lay it out for a CXO.</p>
+
+  <div class="stage-grid">
+    <div class="stage-card">
+      <span class="stage-num">Stage 1</span>
+      <h4>Data &amp; governance readiness</h4>
+      <p>Most pipelines were architected before GenAI existed. Nothing above this stage works if the data underneath isn't governed and trustworthy &mdash; responsible-AI guardrails go in here, not after.</p>
+    </div>
+    <div class="stage-card">
+      <span class="stage-num">Stage 2</span>
+      <h4>GenAI &amp; RAG</h4>
+      <p>A model retrieves context, generates one answer, a human reviews it. This is where almost all of my delivered enterprise work sits today &mdash; SAS-to-Python, Oracle-to-PostgreSQL.</p>
+    </div>
+    <div class="stage-card">
+      <span class="stage-num">Stage 3</span>
+      <h4>Agentic AI</h4>
+      <p>Multiple steps in a loop, tool calls, a verification gate before anything is trusted, a defined point where it escalates to a human instead of guessing. Proven hands-on in my own systems; the natural next step for enterprise risk and reconciliation work.</p>
+    </div>
+    <div class="stage-card">
+      <span class="stage-num">Stage 4</span>
+      <h4>Scale &amp; reference</h4>
+      <p>Whatever worked gets scaled to other accounts under the same governance, backed by a reference customer. Most clients are still behind on stage one, even when agentic AI is the part they ask about first.</p>
+    </div>
+  </div>
+
+  <h2 class="section-head" style="margin-top:8px;">Principles I bring to agentic AI at enterprise scale</h2>
+  <ul class="feature-list" style="margin-bottom:28px;">
+    <li><strong>Verification before trust.</strong> Nothing reaches &ldquo;done&rdquo; without an independent check against a source of truth &mdash; not a review bolted on after the fact.</li>
+    <li><strong>Bounded autonomy.</strong> A defined escalation point to a human when confidence drops, never open-ended autonomy.</li>
+    <li><strong>Auditable state.</strong> Every step traceable after the fact &mdash; matters more in a regulated enterprise than in a demo.</li>
+    <li><strong>Cost-governed by design.</strong> Cheap, fast models by default; escalate only when a task proves it needs more. Budgeted from day one, not bolted on after a pilot gets expensive.</li>
+    <li><strong>Human-in-the-loop by default.</strong> Autonomy is earned stage by stage, not assumed from the start.</li>
+  </ul>
+
+  <div class="roadmap-note">
+    <p style="font-family:'Plex Mono';font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 6px;">Where this comes from</p>
+    These stages and principles aren't theory: Stage 2 is proven across two live enterprise programs (Oracle&rarr;PostgreSQL, SAS-to-Python), and the Stage 3 principles are proven hands-on in a personal multi-agent system I built and run daily. The sequencing also matches where the wider industry is pointing &mdash; the binding constraint on enterprise AI adoption is consistently named as data readiness and legacy complexity, not model capability, and composable, human-in-the-loop agent stacks are becoming the standard delivery shape, not full autonomy. I'd start any new engagement by finding out which stage a client is actually on, not which stage they're excited about.
   </div>
 </section>
 </div>
